@@ -7,7 +7,7 @@ import { Blog } from '../../model/blog';
 })
 export class HttpBlogService {
 
-  private API_URL = 'https://localhost:9000/api/blogs';
+  private API_URL = 'http://localhost:8080/api/blogs';
 
   constructor(private http: HttpClient) { }
 

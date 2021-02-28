@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
+import { Blog } from 'src/app/core/model/blog';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  blogs: Blog;
 
-  constructor() {}
+  constructor(private blogHttp: HttpBlogService) {
+    blogHttp.getBlogs().subscribe((data: any) => {
+      console.log(data);
+      this.blogs = data;
+    })
+  }
 
 }
