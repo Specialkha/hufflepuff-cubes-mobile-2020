@@ -1,0 +1,7 @@
+{
+  "name": "journal-citoyen",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
