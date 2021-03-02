@@ -80,7 +80,8 @@ export class Tab5Page implements OnInit {
   }
 
   onCreate() {
-    if (this.f.password === this.f.confirm) {
+    console.log(this.f)
+    if (this.f.password === this.f.confirm && this.f.password && this.f.confirm) {
       const userToCreate: User = {
         genre: this.f.genre,
         lastName: this.f.lastName,
@@ -99,7 +100,7 @@ export class Tab5Page implements OnInit {
           username: account.email,
           password: this.creationForm.value.password
         };
-        this.presentToastWithOptions();
+        this.presentToastLoginSuccess();
         this.httpUser.userLogin(payload).subscribe((data: any) => {
           this.auth.notifyObservable(data.accessToken);
           this.auth.dataFromObservable.subscribe((authToken: string) => {
@@ -129,10 +130,11 @@ export class Tab5Page implements OnInit {
 
   }
 
-  async presentToastWithOptions() {
+  async presentToastLoginSuccess() {
     const toast = await this.toastController.create({
       message: 'Votre compte a bien été créé',
-      position: 'top'
+      position: 'top',
+      duration: 3000
     });
     toast.present();
   }
