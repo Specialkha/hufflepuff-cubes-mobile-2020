@@ -11,9 +11,6 @@ export class BlogComponent implements OnInit {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      console.log(params.id);
-    })
   }
 
 }
