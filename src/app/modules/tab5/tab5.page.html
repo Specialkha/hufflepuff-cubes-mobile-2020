@@ -20,7 +20,7 @@
   <ion-button (click)="onOpen = !onOpen">Ou vous souhaitez créer un compte</ion-button>
 
   <div *ngIf="onOpen">
-    <form>
+    <form [formGroup]="creationForm" (ngSubmit)="onCreate()">
       <ion-list>
         <ion-radio-group>
           <ion-list-header>

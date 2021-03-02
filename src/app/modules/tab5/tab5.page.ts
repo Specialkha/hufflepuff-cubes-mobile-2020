@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { HttpUserService } from 'src/app/core/http/user/httpUser.service';
 import { User } from 'src/app/core/model/user';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -16,7 +17,7 @@ export class Tab5Page implements OnInit {
   creationForm: FormGroup;
   onOpen: boolean = false;
 
-  constructor(private auth: AuthService, private httpUser: HttpUserService, private router: Router) { }
+  constructor(private toastController:ToastController,private auth: AuthService, private httpUser: HttpUserService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.createNewFormGroupLogIn();
@@ -110,6 +111,7 @@ export class Tab5Page implements OnInit {
           username: account.email,
           password: this.creationForm.value.password
         };
+        this.presentToastWithOptions();
         this.httpUser.userLogin(payload).subscribe((data: any) => {
           this.auth.notifyObservable(data.accessToken);
           this.auth.dataFromObservable.subscribe((authToken: string) => {
@@ -137,5 +139,12 @@ export class Tab5Page implements OnInit {
 
   }
 
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      message: 'Votre compte a bien été créé',
+      position: 'top'
+    });
+    toast.present();
+  }
 
 }
