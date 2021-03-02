@@ -17,7 +17,7 @@ export class Tab5Page implements OnInit {
   creationForm: FormGroup;
   onOpen: boolean = false;
 
-  constructor(private toastController:ToastController,private auth: AuthService, private httpUser: HttpUserService, private router: Router) { }
+  constructor(private toastController: ToastController, private auth: AuthService, private httpUser: HttpUserService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.createNewFormGroupLogIn();
@@ -48,26 +48,12 @@ export class Tab5Page implements OnInit {
         this.auth.notifyUserObservable(payload.username);
         this.httpUser.getSingleUser(this.loginForm.value.login).subscribe((userId: string) => {
           localStorage.setItem('userId', userId);
+          this.router.navigate(['/tabs']);
         });
       });
 
     }, err => {
 
-    });
-  }
-
-  onLogout() {
-    let userCredential: any = {};
-    this.auth.dataFromUserObservable.subscribe((user: any) => {
-      userCredential.user = user;
-    });
-    userCredential.token = localStorage.getItem('token');
-    this.httpUser.userLogout(userCredential).subscribe((data: string) => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
-      this.auth.dataFromObservable.subscribe(() => {
-        this.auth.authToken = null;
-      });
     });
   }
 

@@ -21,6 +21,11 @@
       <ion-label>Votre compte</ion-label>
     </ion-tab-button>
 
+    <ion-tab-button *ngIf="auth.authToken" (click)="onLogout()">
+      <ion-icon name="exit-outline"></ion-icon>
+      <ion-label>Se déconnecter</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button *ngIf="!auth.authToken" tab="tab5">
       <ion-icon name="at-circle-outline"></ion-icon>
       <ion-label>Se connecter / Créer un compte</ion-label>

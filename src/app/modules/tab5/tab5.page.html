@@ -8,11 +8,11 @@
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <ion-item>
       <ion-label>Votre identifiant</ion-label>
-      <ion-input formControlName="login"></ion-input>
+      <ion-input formControlName="login" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Votre mot de passe</ion-label>
-      <ion-input formControlName="password"></ion-input>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
     <ion-button color="success" type="submit">Se connecter</ion-button>
   </form>
