@@ -48,6 +48,8 @@ export class Tab5Page implements OnInit {
         this.auth.notifyUserObservable(payload.username);
         this.httpUser.getSingleUser(this.loginForm.value.login).subscribe((userId: string) => {
           localStorage.setItem('userId', userId);
+          this.loginForm.reset();
+          this.creationForm.reset();
           this.router.navigate(['/tabs']);
         });
       });
@@ -107,6 +109,8 @@ export class Tab5Page implements OnInit {
             this.httpUser.getSingleUser(payload.username).subscribe((userId: string) => {
               localStorage.setItem('userId', userId);
               this.onOpen = false;
+              this.loginForm.reset();
+              this.creationForm.reset();
               this.router.navigate(['/tabs']);
             });
           });
