@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,10 @@ import { Tab5Page } from './tab5.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
     Tab5PageRoutingModule
   ],
   declarations: [Tab5Page]
 })
-export class Tab5PageModule {}
+export class Tab5PageModule { }
