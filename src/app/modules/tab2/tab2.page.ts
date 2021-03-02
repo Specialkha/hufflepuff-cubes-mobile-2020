@@ -4,7 +4,6 @@ import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
 import { Blog } from 'src/app/core/model/blog';
 import { AuthService } from 'src/app/core/services/auth.service';
 
-
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -12,13 +11,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 
 export class Tab2Page {
-  blogs: Blog;
 
-  constructor(private blogHttp: HttpBlogService, public auth: AuthService, private router: Router) {
-    blogHttp.getBlogs().subscribe((data: any) => {
-      console.log(data);
+  blogs: Array<Blog>;
+
+  constructor(private blogHttp: HttpBlogService, public auth: AuthService) {
+    this.blogHttp.getBlogs().subscribe((data: Array<Blog>) => {
       this.blogs = data;
-    })
+    });
   }
 
 }
