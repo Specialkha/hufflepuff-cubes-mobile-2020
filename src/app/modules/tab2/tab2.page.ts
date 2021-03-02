@@ -20,7 +20,7 @@ export class Tab2Page {
 
   onCreateOpen: boolean = false;
 
-  constructor(private blogHttp: HttpBlogService, public auth: AuthService, private router:Router) {
+  constructor(private blogHttp: HttpBlogService, public auth: AuthService, private router: Router) {
     this.blogHttp.getBlogs().subscribe((data: Array<Blog>) => {
       this.blogs = data;
     });
