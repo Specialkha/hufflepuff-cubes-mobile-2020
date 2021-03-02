@@ -8,13 +8,13 @@ import { Blog } from 'src/app/core/model/blog';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  blogs: Blog;
+
+  blogs: Array<Blog>;
 
   constructor(private blogHttp: HttpBlogService) {
-    blogHttp.getBlogs().subscribe((data: any) => {
-      console.log(data);
+    this.blogHttp.getBlogs().subscribe((data: Array<Blog>) => {
       this.blogs = data;
-    })
+    });
   }
 
 }
