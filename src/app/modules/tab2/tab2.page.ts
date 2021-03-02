@@ -12,6 +12,8 @@ export class Tab2Page {
 
   blogs: Array<Blog>;
 
+  onCreateOpen:boolean = false;
+
   constructor(private blogHttp: HttpBlogService, public auth: AuthService) {
     this.blogHttp.getBlogs().subscribe((data: Array<Blog>) => {
       this.blogs = data;
