@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { FilterModule } from 'src/app/core/pipes/Filter.module';
+import { BlogCreationComponent } from '../components/blog-creation/blog-creation.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { FilterModule } from 'src/app/core/pipes/Filter.module';
     Tab2PageRoutingModule,
     FilterModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, BlogCreationComponent]
 })
 export class Tab2PageModule { }
