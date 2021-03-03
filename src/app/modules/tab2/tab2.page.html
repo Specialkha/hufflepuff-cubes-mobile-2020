@@ -13,10 +13,9 @@
       <ion-title size="large">Liste des blogs</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-blog-creation *ngIf="onCreateOpen === true"></app-blog-creation>
   <ion-button *ngIf="auth.authToken && onCreateOpen === false" color="primary" (click)="onCreateOpen = !onCreateOpen">Créer votre blog
   </ion-button>
+  <app-blog-creation *ngIf="onCreateOpen === true"></app-blog-creation>
 
   <div class="search-display">
     <div class="search-container">

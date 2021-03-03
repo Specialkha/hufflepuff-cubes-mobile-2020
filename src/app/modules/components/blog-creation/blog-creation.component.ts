@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
@@ -29,9 +29,10 @@ export class BlogCreationComponent implements OnInit {
     });
   }
 
-  async createNewBlog() {
+  createNewBlog() {
+    console.log(this.blogCreationForm)
     let userId: string;
-    await this.userHttp.getUserWithToken(this.auth.authToken).subscribe((user: User) => {
+    this.userHttp.getUserWithToken(this.auth.authToken).subscribe((user: User) => {
       userId = user._id;
       const payload = {
         title: this.blogCreationForm.value.title,
@@ -41,7 +42,7 @@ export class BlogCreationComponent implements OnInit {
       }
       this.httpBlog.createNewBlog(payload).subscribe((data: any) => {
         if (data) {
-          this.router.navigate(['/tab6', data._id]);
+          this.router.navigate(['/tabs', 'tab6', data._id]);
         }
       });
     });
