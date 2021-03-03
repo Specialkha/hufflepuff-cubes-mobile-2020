@@ -1,3 +1,12 @@
-<p>
-  blog works!
-</p>
+<div>
+  <div [innerHTML]="blog.title">
+
+  </div>
+  <div [innerHTML]="blog.authorId"></div>
+  <div [innerHTML]="blog.description">
+
+  </div>
+  <div *ngFor="let post of blog.posts">
+    <div>{{post}}</div>
+  </div>
+</div>

@@ -30,6 +30,6 @@ export class Tab2Page {
   }
 
   onNavigate(blog) {
-    this.router.navigate(['/blog', blog._id]);
+    this.router.navigate(['/tab6', blog._id]);
   }
 }

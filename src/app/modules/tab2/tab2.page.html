@@ -15,7 +15,7 @@
   </ion-header>
 
   <app-blog-creation *ngIf="onCreateOpen === true"></app-blog-creation>
-  <ion-button *ngIf="auth.authToken" color="primary" (click)="onCreateOpen = !onCreateOpen">Créer votre blog
+  <ion-button *ngIf="auth.authToken && onCreateOpen === false" color="primary" (click)="onCreateOpen = !onCreateOpen">Créer votre blog
   </ion-button>
 
   <div class="search-display">

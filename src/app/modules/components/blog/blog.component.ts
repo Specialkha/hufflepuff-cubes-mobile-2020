@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
+import { Blog } from 'src/app/core/model/blog';
 
 @Component({
   selector: 'app-blog',
@@ -8,9 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute) { }
+  blogId: string;
+  blog: Blog;
+
+  constructor(private route: ActivatedRoute, private httpBlog: HttpBlogService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.blogId = params.id;
+      this.httpBlog.getSingleBlog(this.blogId).subscribe((blog: Blog) => {
+        this.blog = blog;
+      });
+    });
   }
 
 }
