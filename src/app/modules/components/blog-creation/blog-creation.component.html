@@ -1,3 +1,15 @@
-<p>
-  blog-creation works!
-</p>
+<form [formGroup]="blogCreationForm" (ngSubmt)="createNewBlog()">
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea formControlName="title"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea formControlName="content"></ion-textarea>
+  </ion-item>
+  <ion-button type="submit" color="success">Créer votre blog !</ion-button>
+</form>
