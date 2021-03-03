@@ -1,12 +1,16 @@
-<div>
-  <div [innerHTML]="blog.title">
-
+<div class="card" *ngIf="isLoaded">
+  <h1 [innerHTML]="blog.title">
+  </h1>
+  <div [innerHTML]="blog.authorId">
   </div>
-  <div [innerHTML]="blog.authorId"></div>
-  <div [innerHTML]="blog.description">
-
-  </div>
+  <p [innerHTML]="blog.description">
+  </p>
   <div *ngFor="let post of blog.posts">
-    <div>{{post}}</div>
+    <h2 [innerHTML]="post.title"></h2>
+    <div [innerHTML]="post.content"></div>
+    <div *ngFor="let comment of post.comments">
+      <p [innerHTML]="comment.content"></p>
+      <div>Ecrit par {{comment.comments.author}} le {{comment.comments.date | date: 'dd/mm/yyyy'}} à {{comment.comments.date |date: 'HH:mm'}}</div>
+    </div>
   </div>
 </div>
