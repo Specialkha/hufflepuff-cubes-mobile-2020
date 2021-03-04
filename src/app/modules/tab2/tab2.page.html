@@ -13,15 +13,15 @@
       <ion-title size="large">Liste des blogs</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-button *ngIf="auth.authToken && onCreateOpen === false" color="primary" (click)="onCreateOpen = !onCreateOpen">Créer votre blog
+  <ion-button *ngIf="auth.authToken && onCreateOpen === false" color="primary" (click)="onCreateOpen = !onCreateOpen"
+    class="create-blog">Créer votre blog
   </ion-button>
   <app-blog-creation *ngIf="onCreateOpen === true"></app-blog-creation>
 
   <div class="search-display">
     <div class="search-container">
-      <input class="input-search" type="search" [(ngModel)]="searchText" placeholder="Rechercher un blog" name="search"
-        id="search">
-      <label for="search" class="input-search-label">Chercher un blog</label>
+      <ion-searchbar class="input-search" type="search" [(ngModel)]="searchText" placeholder="Rechercher un blog"
+        name="search" id="search"></ion-searchbar>
     </div>
   </div>
 

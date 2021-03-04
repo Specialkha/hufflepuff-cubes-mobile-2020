@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,9 @@ import { Tab4Page } from './tab4.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     Tab4PageRoutingModule
   ],
   declarations: [Tab4Page]
 })
-export class Tab4PageModule {}
+export class Tab4PageModule { }

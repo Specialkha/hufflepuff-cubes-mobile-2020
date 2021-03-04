@@ -13,7 +13,6 @@ import { Tab5Page } from './tab5.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    FormsModule,
     ReactiveFormsModule,
     Tab5PageRoutingModule
   ],
