@@ -1,10 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab4</ion-title>
+    <ion-title>Votre compte</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Votre compte</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-radio-group>
@@ -14,12 +19,12 @@
           </ion-label>
         </ion-list-header>
         <ion-item>
-          <ion-label for="male">un homme</ion-label>
-          <ion-radio formControlName="genre" id="male" value="male" type="radio" slot="start"></ion-radio>
+          <ion-label>un homme</ion-label>
+          <ion-radio formControlName="genre" value="male" slot="start" name="genre"></ion-radio>
         </ion-item>
         <ion-item>
-          <ion-label for="female">une femme</ion-label>
-          <ion-radio formControlName="genre" id="female" value="female" type="radio" slot="start"></ion-radio>
+          <ion-label>une femme</ion-label>
+          <ion-radio formControlName="genre" value="female" slot="start" name="genre"></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>
@@ -63,6 +68,6 @@
       <ion-label>Téléphone mobile *</ion-label>
       <ion-input formControlName="mobile" type="tel"></ion-input>
     </ion-item>
-    <ion-button type="submit" color="success">Créer votre compte</ion-button>
+    <ion-button type="submit" color="success" expand="block">Créer votre compte</ion-button>
   </form>
 </ion-content>

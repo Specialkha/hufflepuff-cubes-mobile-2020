@@ -50,6 +50,7 @@ export class Tab5Page implements OnInit {
           localStorage.setItem('userId', userId);
           this.loginForm.reset();
           this.creationForm.reset();
+          this.presentToastSignInSuccess();
           this.router.navigate(['/tabs']);
         });
       });
@@ -100,7 +101,7 @@ export class Tab5Page implements OnInit {
           username: account.email,
           password: this.creationForm.value.password
         };
-        this.presentToastLoginSuccess();
+        this.presentToastSignUpSuccess();
         this.httpUser.userLogin(payload).subscribe((data: any) => {
           this.auth.notifyObservable(data.accessToken);
           this.auth.dataFromObservable.subscribe((authToken: string) => {
@@ -130,11 +131,24 @@ export class Tab5Page implements OnInit {
 
   }
 
-  async presentToastLoginSuccess() {
+  async presentToastSignUpSuccess() {
     const toast = await this.toastController.create({
       message: 'Votre compte a bien été créé',
       position: 'top',
-      duration: 3000
+      duration: 3000,
+      color: 'success',
+      cssClass: 'toast'
+    });
+    toast.present();
+  }
+
+  async presentToastSignInSuccess() {
+    const toast = await this.toastController.create({
+      message: 'Vous avez bien été identifié',
+      position: 'top',
+      duration: 3000,
+      color: 'success',
+      cssClass: 'toast'
     });
     toast.present();
   }

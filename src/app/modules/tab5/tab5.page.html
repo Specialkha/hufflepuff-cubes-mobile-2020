@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab5</ion-title>
+    <ion-title>Se connecter</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,10 +14,10 @@
       <ion-label>Votre mot de passe</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-    <ion-button color="success" type="submit">Se connecter</ion-button>
+    <ion-button color="success" type="submit" expand="block">Se connecter</ion-button>
   </form>
 
-  <ion-button (click)="onOpen = !onOpen">Ou vous souhaitez créer un compte</ion-button>
+  <ion-button (click)="onOpen = !onOpen" expand="block">Ou vous souhaitez créer un compte</ion-button>
 
   <div *ngIf="onOpen">
     <form [formGroup]="creationForm" (ngSubmit)="onCreate()">
