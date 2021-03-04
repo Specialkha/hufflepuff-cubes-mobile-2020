@@ -16,9 +16,9 @@ export class PostComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private httpPost: HttpPostService, private blogService: BlogService) {
     this.route.params.subscribe((params) => {
-      this.httpPost.getSinglePost(this.blogService.getBlogId, params.id).subscribe((data: Array<Post>) => {
+      this.httpPost.getSinglePost(this.blogService.getBlogId, params.id).subscribe((data: any) => {
         this.post = data[0];
-        console.log(this.post)
+        console.log(data)
       });
     });
   }
