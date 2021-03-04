@@ -20,8 +20,6 @@ export class BlogComponent implements OnInit {
   onCreateOpen: boolean = false;
   isBlogOwner: boolean = false;
 
-
-
   constructor(private route: ActivatedRoute, private httpBlog: HttpBlogService, private httpUser: HttpUserService, private router: Router, private blogService: BlogService) {
     this.route.params.subscribe(params => {
       this.blogId = params.id;
