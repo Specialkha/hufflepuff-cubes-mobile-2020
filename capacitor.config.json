@@ -4,6 +4,9 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "server": {
+    "url": "http://localhost:8080"
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
