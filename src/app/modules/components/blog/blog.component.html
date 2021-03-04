@@ -15,7 +15,7 @@
       <p>Ils ont réagit :</p>
       <hr>
       <div *ngFor="let comment of post.comments">
-        <p [innerHTML]="comment.content"></p>
+        <p [innerHTML]="comment.comments.content"></p>
         <div>Ecrit par {{comment.comments.author}} le {{comment.comments.date | date: 'dd/mm/yyyy'}} à
           {{comment.comments.date |date: 'HH:mm'}}</div>
           <hr>
