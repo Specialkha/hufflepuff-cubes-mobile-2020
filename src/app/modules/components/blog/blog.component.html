@@ -9,6 +9,8 @@
     class="create-post">Créer un
     post
   </ion-button>
+  <app-post-creation *ngIf="onCreateOpen === true"></app-post-creation>
+
   <div *ngFor="let post of blog.posts">
     <ion-card (click)="onNavigate(blog._id, post)">
       <ion-card-header [innerHTML]="post.title" class="post-title"></ion-card-header>
