@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab6Page implements OnInit {
 
+  blogTitle:string;
+
   constructor() { }
 
   ngOnInit() {

@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tab6PageRoutingModule } from './tab6-routing.module';
+import { Tab7PageRoutingModule } from './tab7-routing.module';
 
-import { Tab6Page } from './tab6.page';
-import { BlogComponent } from '../components/blog/blog.component';
+import { Tab7Page } from './tab7.page';
 import { PostComponent } from '../components/post/post.component';
 
 @NgModule({
@@ -15,8 +14,8 @@ import { PostComponent } from '../components/post/post.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    Tab6PageRoutingModule
+    Tab7PageRoutingModule
   ],
-  declarations: [Tab6Page, BlogComponent]
+  declarations: [Tab7Page, PostComponent]
 })
-export class Tab6PageModule {}
+export class Tab7PageModule { }
