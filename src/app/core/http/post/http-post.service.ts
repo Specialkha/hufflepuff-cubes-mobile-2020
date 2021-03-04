@@ -7,7 +7,7 @@ import { Post } from '../../model/post';
 })
 export class HttpPostService {
 
-  private API_URL = 'http://localhost:8080/api/post/';
+  private API_URL = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +18,10 @@ export class HttpPostService {
 
   // get a post from userId
   getSinglePost(blogId: string, postId: string) {
-    return this.http.get('/api/blogs/' + blogId + "/post/" + postId);
+    return this.http.get(this.API_URL + '/api/blogs/' + blogId + "/post/" + postId);
   }
 
   updatePost(blogId: string, postId: string, payload: Post) {
-    return this.http.put('/api/blogs/' + blogId + "/post/" + postId, payload);
+    return this.http.put(this.API_URL + '/api/blogs/' + blogId + "/post/" + postId, payload);
   }
 }

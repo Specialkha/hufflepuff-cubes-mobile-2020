@@ -1,25 +1,14 @@
 <div class="card" *ngIf="isLoaded">
   <h1 [innerHTML]="blog.title" class="blog-title">
   </h1>
-  <div [innerHTML]="blog.authorId" class="blog-author">
+  <div class="blog-author">Ecrit par : {{blog.authorId}}
   </div>
   <p [innerHTML]="blog.description" class="blog-description">
   </p>
   <div *ngFor="let post of blog.posts">
-    <h2 [innerHTML]="post.title" class="post-title"></h2>
-    <div [innerHTML]="post.content" class="post-content"></div>
-    <div *ngIf="post.comments.length === 0">
-      <p>Soyez le premier à réagir !</p>
-    </div>
-    <div *ngIf="post.comments.length > 0">
-      <p class="reaction">Ils ont réagit :</p>
-      <hr>
-      <div *ngFor="let comment of post.comments">
-        <p [innerHTML]="comment.comments.content" class="comment-content"></p>
-        <div class="comment-date">Ecrit par {{comment.comments.author}} le {{comment.comments.date | date: 'dd/mm/yyyy'}} à
-          {{comment.comments.date |date: 'HH:mm'}}</div>
-          <hr>
-      </div>
-    </div>
+    <ion-card (click)="onNavigate(blog._id, post)">
+      <ion-card-header [innerHTML]="post.title" class="post-title"></ion-card-header>
+      <ion-card-content [innerHTML]="(post.content | slice : 0 : 500)+('...')" class="post-content"></ion-card-content>
+    </ion-card>
   </div>
 </div>
