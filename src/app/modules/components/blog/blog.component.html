@@ -5,6 +5,10 @@
   </div>
   <p [innerHTML]="blog.description" class="blog-description">
   </p>
+  <ion-button *ngIf="isBlogOwner && onCreateOpen === false" color="warning" (click)="onCreateOpen = !onCreateOpen"
+    class="create-post">Créer un
+    post
+  </ion-button>
   <div *ngFor="let post of blog.posts">
     <ion-card (click)="onNavigate(blog._id, post)">
       <ion-card-header [innerHTML]="post.title" class="post-title"></ion-card-header>

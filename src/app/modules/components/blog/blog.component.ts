@@ -17,6 +17,10 @@ export class BlogComponent implements OnInit {
   blogId: string;
   blog: Blog;
   isLoaded: boolean = false;
+  onCreateOpen: boolean = false;
+  isBlogOwner: boolean = false;
+
+
 
   constructor(private route: ActivatedRoute, private httpBlog: HttpBlogService, private httpUser: HttpUserService, private router: Router, private blogService: BlogService) {
     this.route.params.subscribe(params => {
@@ -38,7 +42,7 @@ export class BlogComponent implements OnInit {
 
   onNavigate(blogId: string, post: Post) {
     this.blogService.blogId = blogId;
-    this.router.navigate(['/tabs','tab7','post', post._id]);
+    this.router.navigate(['/tabs', 'tab7', 'post', post._id]);
   }
 
 }
