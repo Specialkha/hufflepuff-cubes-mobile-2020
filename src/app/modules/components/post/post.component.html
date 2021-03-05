@@ -1,5 +1,6 @@
 <div *ngIf="isLoaded">
   <h2 [innerHTML]="post.title" class="post-title"></h2>
+  <div>Le {{post.date | date : 'dd/MM/yyyy'}} à {{post.date | date :'HH:mm'}}</div>
   <div [innerHTML]="post.content" class="post-content"></div>
   <div *ngIf="post.comments.length === 0">
     <p>Soyez le premier à réagir !</p>
@@ -17,7 +18,7 @@
     <div *ngFor="let comment of post.comments">
       <p [innerHTML]="comment.comments.content" class="comment-content"></p>
       <div class="comment-date">Ecrit par {{comment.comments.author}} le {{comment.comments.date | date:
-        'dd/mm/yyyy'}} à
+        'dd/MM/yyyy'}} à
         {{comment.comments.date | date: 'HH:mm'}}</div>
       <hr>
     </div>
