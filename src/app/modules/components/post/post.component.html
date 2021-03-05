@@ -6,6 +6,12 @@
     <ion-button color="primary" expand="block">Réagir !</ion-button>
   </div>
   <div *ngIf="post.comments.length > 0">
+    <ion-button color="primary" expand="block" *ngIf="auth.authToken && !onShow" (click)="onShow = true">Réagir !
+    </ion-button>
+    <form [formGroup]="commentCreationForm" (ngSubmit)="onCreateComment()" *ngIf="onShow">
+      <ion-textarea formControlName="content"></ion-textarea>
+      <ion-button type="submit" expand="block" color="success">Réagir</ion-button>
+    </form>
     <p class="reaction">Ils ont réagit :</p>
     <hr>
     <div *ngFor="let comment of post.comments">
@@ -16,5 +22,10 @@
       <hr>
     </div>
   </div>
-  <ion-button color="primary" expand="block">Réagir !</ion-button>
+  <ion-button color="primary" expand="block" *ngIf="auth.authToken && !onShow" (click)="onShow = true">Réagir !
+  </ion-button>
+  <form [formGroup]="commentCreationForm" (ngSubmit)="onCreateComment()" *ngIf="onShow">
+    <ion-textarea formControlName="content"></ion-textarea>
+    <ion-button type="submit" expand="block" color="success">Réagir</ion-button>
+  </form>
 </div>
