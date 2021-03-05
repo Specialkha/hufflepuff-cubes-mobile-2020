@@ -29,7 +29,7 @@ export class PostCreationComponent implements OnInit {
   newFormGroupForPostCreation() {
     return new FormGroup({
       title: new FormControl('', Validators.required),
-      content: new FormControl('', Validators.required)
+      content: new FormControl('', [Validators.required, Validators.maxLength(20000)])
     });
   }
 
