@@ -14,11 +14,13 @@ export class PostComponent implements OnInit {
 
   post: any;
 
+  isLoaded:boolean = false;
+
   constructor(private route: ActivatedRoute, private httpPost: HttpPostService, private blogService: BlogService) {
     this.route.params.subscribe((params) => {
       this.httpPost.getSinglePost(this.blogService.getBlogId, params.id).subscribe((data: any) => {
         this.post = data[0];
-        console.log(data)
+        this.isLoaded = true;
       });
     });
   }

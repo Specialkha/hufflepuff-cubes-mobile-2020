@@ -25,11 +25,9 @@ export class BlogComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.blogId = params.id;
       this.httpBlog.getSingleBlog(this.blogId).subscribe((blog: Blog) => {
-        console.log(blog)
         this.blog = blog;
         this.httpUser.getSingleUserWithId(this.blog.authorId).subscribe((user: User) => {
           httpUser.getUserWithToken(auth.authToken).subscribe((userLoggedIn: User) => {
-            console.log(blog.authorId, userLoggedIn._id)
             if (blog.authorId === userLoggedIn._id) {
               this.isBlogOwner = true;
               this.blog.authorId = user.lastName + ' ' + user.firstName;
@@ -38,8 +36,10 @@ export class BlogComponent implements OnInit {
               this.blog.authorId = user.lastName + ' ' + user.firstName;
               this.isLoaded = true;
             }
+          }, err => {
+            this.blog.authorId = user.lastName + ' ' + user.firstName;
+            this.isLoaded = true;
           });
-
         });
       });
     });
