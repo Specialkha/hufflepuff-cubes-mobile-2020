@@ -5,8 +5,8 @@
   </div>
   <p [innerHTML]="blog.description" class="blog-description">
   </p>
-  <ion-button *ngIf="isBlogOwner && onCreateOpen === false" color="warning" (click)="onCreateOpen = !onCreateOpen"
-    class="create-post">Créer un
+  <ion-button *ngIf="isBlogOwner && onCreateOpen === false" color="primary" expand="block"
+    (click)="onCreateOpen = !onCreateOpen" class="create-post">Créer un
     post
   </ion-button>
   <app-post-creation *ngIf="onCreateOpen === true"></app-post-creation>

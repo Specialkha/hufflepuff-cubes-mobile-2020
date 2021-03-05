@@ -5,6 +5,7 @@ import { HttpUserService } from 'src/app/core/http/user/httpUser.service';
 import { Blog } from 'src/app/core/model/blog';
 import { Post } from 'src/app/core/model/post';
 import { User } from 'src/app/core/model/user';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { BlogService } from 'src/app/core/services/blog.service';
 
 @Component({
@@ -20,15 +21,25 @@ export class BlogComponent implements OnInit {
   onCreateOpen: boolean = false;
   isBlogOwner: boolean = false;
 
-  constructor(private route: ActivatedRoute, private httpBlog: HttpBlogService, private httpUser: HttpUserService, private router: Router, private blogService: BlogService) {
+  constructor(private route: ActivatedRoute, private httpBlog: HttpBlogService, private httpUser: HttpUserService, private router: Router, private blogService: BlogService, private auth: AuthService) {
     this.route.params.subscribe(params => {
       this.blogId = params.id;
       this.httpBlog.getSingleBlog(this.blogId).subscribe((blog: Blog) => {
         console.log(blog)
         this.blog = blog;
         this.httpUser.getSingleUserWithId(this.blog.authorId).subscribe((user: User) => {
-          this.blog.authorId = user.lastName + ' ' + user.firstName;
-          this.isLoaded = true;
+          httpUser.getUserWithToken(auth.authToken).subscribe((userLoggedIn: User) => {
+            console.log(blog.authorId, userLoggedIn._id)
+            if (blog.authorId === userLoggedIn._id) {
+              this.isBlogOwner = true;
+              this.blog.authorId = user.lastName + ' ' + user.firstName;
+              this.isLoaded = true;
+            } else {
+              this.blog.authorId = user.lastName + ' ' + user.firstName;
+              this.isLoaded = true;
+            }
+          });
+
         });
       });
     });
