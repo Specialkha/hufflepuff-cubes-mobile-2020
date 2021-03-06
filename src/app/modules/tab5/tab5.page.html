@@ -21,8 +21,8 @@
 
   <div *ngIf="onOpen">
     <form [formGroup]="creationForm" (ngSubmit)="onCreate()">
-      <ion-list formControlName="genre">
-        <ion-radio-group>
+      <ion-list>
+        <ion-radio-group formControlName="genre">
           <ion-list-header>
             <ion-label>
               Vous êtes ? *
