@@ -54,4 +54,8 @@ export class BlogComponent implements OnInit {
     this.router.navigate(['/tabs', 'tab7', 'post', post._id]);
   }
 
+  dataFromChild(event) {
+    this.onCreateOpen = event;
+  }
+
 }

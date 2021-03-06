@@ -13,7 +13,7 @@ export class HttpPostService {
 
   //create a post in a blog
   createPostInBlog(blogId: string, payload: any) {
-    return this.http.post(this.API_URL + blogId, payload);
+    return this.http.post(this.API_URL+'/api/post/' + blogId, payload);
   }
 
   // get a post from userId

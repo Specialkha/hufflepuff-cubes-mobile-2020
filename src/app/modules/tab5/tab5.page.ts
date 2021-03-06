@@ -81,7 +81,6 @@ export class Tab5Page implements OnInit {
   }
 
   onCreate() {
-    console.log(this.f)
     if (this.f.password === this.f.confirm && this.f.password && this.f.confirm) {
       const userToCreate: User = {
         genre: this.f.genre,

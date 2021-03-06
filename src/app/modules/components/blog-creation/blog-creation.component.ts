@@ -30,7 +30,6 @@ export class BlogCreationComponent implements OnInit {
   }
 
   createNewBlog() {
-    console.log(this.blogCreationForm)
     let userId: string;
     this.userHttp.getUserWithToken(this.auth.authToken).subscribe((user: User) => {
       userId = user._id;

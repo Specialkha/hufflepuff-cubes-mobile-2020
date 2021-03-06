@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
 import { HttpPostService } from 'src/app/core/http/post/http-post.service';
-import { HttpUserService } from 'src/app/core/http/user/httpUser.service';
 import { RandomGeneratorService } from 'src/app/core/services/random-generator.service';
 
 @Component({
@@ -13,15 +12,18 @@ import { RandomGeneratorService } from 'src/app/core/services/random-generator.s
 })
 export class PostCreationComponent implements OnInit {
 
+  @Input() onCreateOpen: boolean;
+  @Output() onCloseCreatePost: EventEmitter<boolean> = new EventEmitter();
+
   postCreationForm: FormGroup;
 
   idBlog: string;
 
-  constructor(private random: RandomGeneratorService, private httpPost: HttpPostService, private httpBlog: HttpBlogService, private httpUser: HttpUserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private random: RandomGeneratorService, private httpPost: HttpPostService, private httpBlog: HttpBlogService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.idBlog = params.blogId;
+      this.idBlog = params.id;
     });
     this.postCreationForm = this.newFormGroupForPostCreation();
   }
@@ -44,7 +46,8 @@ export class PostCreationComponent implements OnInit {
     this.httpBlog.getSingleBlog(this.idBlog).subscribe((data: any) => {
       this.httpPost.createPostInBlog(data._id, postToCreate).subscribe((data: any) => {
         if (data) {
-          this.router.navigate(['/blog', this.idBlog]);
+          this.onCreateOpen = false;
+          this.onCloseCreatePost.emit(this.onCreateOpen);
         }
       });
     });

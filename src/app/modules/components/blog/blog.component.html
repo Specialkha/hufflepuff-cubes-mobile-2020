@@ -9,7 +9,7 @@
     (click)="onCreateOpen = !onCreateOpen" class="create-post">Créer un
     post
   </ion-button>
-  <app-post-creation *ngIf="onCreateOpen === true"></app-post-creation>
+  <app-post-creation *ngIf="onCreateOpen === true" [onCreateOpen]="onCreateOpen" (onCloseCreatePost)="dataFromChild($event)"></app-post-creation>
 
   <div *ngFor="let post of blog.posts">
     <ion-card (click)="onNavigate(blog._id, post)">
