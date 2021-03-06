@@ -57,11 +57,12 @@ export class BlogComponent implements OnInit {
   }
 
   dataFromChild(event) {
-    this.onCreateOpen = event;
+    this.onCreateOpen = event.boolean;
     this.httpBlog.getSingleBlog(this.blogId).subscribe((blog: Blog) => {
       this.blog = blog;
       this.blog.authorId = this.userWriter.lastName + ' ' + this.userWriter.firstName;
       this.isLoaded = true;
+      this.router.navigate(['/tabs', 'tab7', 'post', event.postId]);
     });
   }
 
