@@ -1,11 +1,11 @@
 <form [formGroup]="postCreationForm" (ngSubmit)="onCreate()">
   <ion-item>
-    <ion-label position="floating">Titre de votre blog</ion-label>
+    <ion-label position="floating">Titre de votre post</ion-label>
     <ion-input formControlName="title"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Le contenu de votre blog</ion-label>
+    <ion-label position="floating">Le contenu de votre post</ion-label>
     <ion-textarea type="text" formControlName="content"></ion-textarea>
   </ion-item>
-  <ion-button type="submit" color="success">Créer votre blog !</ion-button>
+  <ion-button type="submit" color="success">Créer votre post !</ion-button>
 </form>
