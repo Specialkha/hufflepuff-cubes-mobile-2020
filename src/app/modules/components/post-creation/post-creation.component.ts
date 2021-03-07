@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
@@ -13,7 +13,7 @@ import { RandomGeneratorService } from 'src/app/core/services/random-generator.s
 export class PostCreationComponent implements OnInit {
 
   @Input() onCreateOpen: boolean;
-  @Output() onCloseCreatePost: EventEmitter<boolean> = new EventEmitter();
+  @Output() onCloseCreatePost: EventEmitter<{ boolean: boolean, postId: string }> = new EventEmitter();
 
   postCreationForm: FormGroup;
 
@@ -47,7 +47,11 @@ export class PostCreationComponent implements OnInit {
       this.httpPost.createPostInBlog(data._id, postToCreate).subscribe((data: any) => {
         if (data) {
           this.onCreateOpen = false;
-          this.onCloseCreatePost.emit(this.onCreateOpen);
+          const event = {
+            boolean: this.onCreateOpen,
+            postId: postToCreate._id
+          };
+          this.onCloseCreatePost.emit(event);
         }
       });
     });
