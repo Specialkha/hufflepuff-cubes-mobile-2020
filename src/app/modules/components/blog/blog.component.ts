@@ -53,7 +53,7 @@ export class BlogComponent implements OnInit {
 
   onNavigate(blogId: string, post: Post) {
     this.blogService.blogId = blogId;
-    this.router.navigate(['/tabs', 'tab7', 'post', post._id]);
+    this.router.navigate(['/tabs', 'blog', this.blogId, 'post', post._id]);
   }
 
   dataFromChild(event) {
@@ -62,7 +62,7 @@ export class BlogComponent implements OnInit {
       this.blog = blog;
       this.blog.authorId = this.userWriter.lastName + ' ' + this.userWriter.firstName;
       this.isLoaded = true;
-      this.router.navigate(['/tabs', 'tab7', 'post', event.postId]);
+      this.router.navigate(['/tabs', 'blog', this.blogId, 'post', event.postId]);
     });
   }
 

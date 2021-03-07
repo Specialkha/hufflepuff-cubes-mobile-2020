@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HttpBlogService } from 'src/app/core/http/blog/httpBlog.service';
 import { HttpPostService } from 'src/app/core/http/post/http-post.service';
+import { BlogService } from 'src/app/core/services/blog.service';
 import { RandomGeneratorService } from 'src/app/core/services/random-generator.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class PostCreationComponent implements OnInit {
 
   idBlog: string;
 
-  constructor(private random: RandomGeneratorService, private httpPost: HttpPostService, private httpBlog: HttpBlogService, private route: ActivatedRoute) { }
+  constructor(private random: RandomGeneratorService, private httpPost: HttpPostService, private httpBlog: HttpBlogService, private route: ActivatedRoute, private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -51,6 +52,7 @@ export class PostCreationComponent implements OnInit {
             boolean: this.onCreateOpen,
             postId: postToCreate._id
           };
+          this.blogService.blogId= this.idBlog;
           this.onCloseCreatePost.emit(event);
         }
       });

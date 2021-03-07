@@ -32,7 +32,7 @@ const routes: Routes = [
         loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
       },
       {
-        path: 'tab7/post/:id',
+        path: 'blog/:id/post/:id',
         loadChildren: () => import('../tab7/tab7.module').then(m => m.Tab7PageModule)
       },
       {
